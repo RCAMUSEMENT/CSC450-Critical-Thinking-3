@@ -1,0 +1,67 @@
+START
+    DECLARE integer variables: powerGridLevel, cameraStaticDb, animatronicProximity
+    DECLARE integer pointers: powerRegPtr, staticRegPtr, proxRegPtr
+
+    PRINT "Enter current Power Grid Percentage (0-100): "
+    READ user input
+    WHILE input stream is in a failed state
+        PRINT "SYSTEM ERROR: Invalid telemetry data. Enter a valid integer: "
+        CLEAR input stream error flags
+        FLUSH input stream line buffer
+        READ user input
+    ENDWHILE
+    ASSIGN powerGridLevel = input
+
+    PRINT "Enter Camera System Static Decibels: "
+    READ user input
+    WHILE input stream is in a failed state
+        PRINT "SYSTEM ERROR: Invalid telemetry data. Enter a valid integer: "
+        CLEAR input stream error flags
+        FLUSH input stream line buffer
+        READ user input
+    ENDWHILE
+    ASSIGN cameraStaticDb = input
+
+    PRINT "Enter Animatronic Hallway Proximity Units: "
+    READ user input
+    WHILE input stream is in a failed state
+        PRINT "SYSTEM ERROR: Invalid telemetry data. Enter a valid integer: "
+        CLEAR input stream error flags
+        FLUSH input stream line buffer
+        READ user input
+    ENDWHILE
+    ASSIGN animatronicProximity = input
+
+    TRY
+        ALLOCATE dynamic memory using 'new int' for powerRegPtr and copy value of powerGridLevel
+        ALLOCATE dynamic memory using 'new int' for staticRegPtr and copy value of cameraStaticDb
+        ALLOCATE dynamic memory using 'new int' for proxRegPtr and copy value of animatronicProximity
+    CATCH dynamic memory allocation failures
+        PRINT "CRITICAL SUB-SYSTEM FAILURE: Heap allocation error."
+        IF powerRegPtr is NOT null THEN DELETE powerRegPtr ENDIF
+        IF staticRegPtr is NOT null THEN DELETE staticRegPtr ENDIF
+        IF proxRegPtr is NOT null THEN DELETE proxRegPtr ENDIF
+        EXIT program with error code
+    ENDTRY
+
+    PRINT "Variable powerGridLevel Address: " + Address of powerGridLevel + " | Value: " + powerGridLevel
+    PRINT "Variable cameraStaticDb Address: " + Address of cameraStaticDb + " | Value: " + cameraStaticDb
+    PRINT "Variable animatronicProximity Address: " + Address of animatronicProximity + " | Value: " + animatronicProximity
+
+    PRINT "Pointer powerRegPtr Target Location: " + powerRegPtr + " | Live Override Value: " + Dereference(powerRegPtr)
+    PRINT "Pointer staticRegPtr Target Location: " + staticRegPtr + " | Live Override Value: " + Dereference(staticRegPtr)
+    PRINT "Pointer proxRegPtr Target Location: " + proxRegPtr + " | Live Override Value: " + Dereference(proxRegPtr)
+
+    IF powerRegPtr is NOT null THEN
+        DELETE powerRegPtr
+        SET powerRegPtr = nullptr
+    ENDIF
+    IF staticRegPtr is NOT null THEN
+        DELETE staticRegPtr
+        SET staticRegPtr = nullptr
+    ENDIF
+    IF proxRegPtr is NOT null THEN
+        DELETE proxRegPtr
+        SET proxRegPtr = nullptr
+    ENDIF
+END
