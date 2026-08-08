@@ -11,8 +11,8 @@
 
 This repository contains the complete deliverables for the Module 3 Critical Thinking assignment. The project focuses on safe dynamic memory management, raw pointer allocation lifecycle loops, and defensive hardware input stream validation:
 
-1. **Fazbear Security Telemetry OS (`main.cpp`):** A secure console application engineered to capture whole-number environmental variables, instantiate isolated raw integer pointers to dynamic memory blocks via the `new` operator, display concurrent stack and heap address structures, and securely release dynamic allocations back to the operating system using the `delete` operator.
-2. **System Design Pseudocode (`pseudocode.txt`):** A high-level algorithmic blueprint detailing step-by-step memory allocation checks, input validation stream loops, and memory reclamation boundaries to prevent data tracking loops from hanging.
+1. **Fazbear Security Telemetry OS (`Fazbear-Enterprise-Security`):** A secure console application engineered to capture whole-number environmental variables, instantiate isolated raw integer pointers to dynamic memory blocks via the `new` operator, display concurrent stack and heap address structures, and securely release dynamic allocations back to the operating system using the `delete` operator.
+2. **System Design Pseudocode (`Fazbear-Enterprise-Security-Pseudocode.txt`):** A high-level algorithmic blueprint detailing step-by-step memory allocation checks, input validation stream loops, and memory reclamation boundaries to prevent data tracking loops from hanging.
 
 ---
 
